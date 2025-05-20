@@ -8,6 +8,7 @@ import Preguntas from './dashboard/preguntas/page';
 import { Promociones } from './dashboard/promociones/page';
 import ResponsabilidadSocial from './dashboard/responsabilidadSocial/page';
 import Sucursales from './dashboard/sucursales/page';
+import Login from './dashboard/auth/Login';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="promociones" element={<Promociones />} />
         <Route path="responsabilidadSocial" element={<ResponsabilidadSocial />} />
         <Route path="sucursales" element={<Sucursales />} />
+        <Route path="auth" element={<Login />} />
       </Route>
     </Routes>
   );
