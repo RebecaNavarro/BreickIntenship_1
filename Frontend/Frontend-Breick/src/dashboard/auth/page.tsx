@@ -1,7 +1,7 @@
-import React from 'react'
 
-export const page = () => {
+
+export default function AuthPage() {
   return (
-    <div>page</div>
+    <div>Que tal </div>
   )
 }
