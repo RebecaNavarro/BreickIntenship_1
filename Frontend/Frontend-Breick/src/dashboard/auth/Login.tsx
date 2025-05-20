@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useEffect } from "react";
 
 import logo from "/logo.png";
 
@@ -16,7 +15,7 @@ function Login() {
   const changeToSignIn = () => setMethod("signin");
 
   return (
-    <div className="login-page">
+    <div className="login-page flex ">
       
       {method === "signin" && (
       <div id="login" className="login-container justify-center items-center">

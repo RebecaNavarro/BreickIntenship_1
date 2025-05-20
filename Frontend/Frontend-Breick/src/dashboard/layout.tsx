@@ -57,6 +57,11 @@ const DashboardLayout = () => {
       to: "/sucursales",
       icon: <FaMapMarkerAlt className="mr-2" />,
     },
+    {
+      label: "Login",
+      to: "/auth",
+      icon: <FaMapMarkerAlt className="mr-2" />,
+    },
   ];
 
   return (

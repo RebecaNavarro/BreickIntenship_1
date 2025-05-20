@@ -1,4 +1,7 @@
 # Logs
+.env
+package-lock.json
+
 logs
 *.log
 npm-debug.log*
@@ -25,5 +28,3 @@ dist-ssr
 
 *.tsbuildinfo
 next-env.d.ts
-package-lock.json
-package.json
