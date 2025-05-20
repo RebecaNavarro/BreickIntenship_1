@@ -1,86 +1,97 @@
 import { useState } from "react";
-import logo from "/logo.png"
+import logo from "/logo.png";
 import "./Login.css";
 
 function Login() {
-  const [count, setCount] = useState(0);
 
   return (
-    <>
-      <div className="bg-gray-100 flex justify-center items-center h-screen">
-        <div id="leftside" className="w-1/2 h-screen hidden lg:block">
+    <div id="login" className="login-container">
+      <div id="leftside" className="login-left">
+        <div className="login-branding">
           <img
+            id="logo"
             src={logo}
-            alt="Logo"
-            className="object-cover w-full h-full"
+            alt="Logo Breick"
+            className="login-logo"
           />
         </div>
+      </div>
 
-        <div id="rightside" className="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
-          <h1 className="h1">
+      <div id="rightside" className="login-right">
+        <div className="login-form-container">
+          <h1 id="h1-inicio-sesion" className="login-title">
             Iniciar Sesión
           </h1>
-
-          <form action="#" method="POST">
-            <div className="mb-4">
+          
+          <form id="inicio-sesion" className="login-form">
+            <div className="form-group">
               <label
+                id="label-usuario"
                 htmlFor="username"
-                className="text block text-gray-600"
+                className="form-label"
               >
                 Usuario
               </label>
               <input
                 type="text"
-                id="username"
+                id="input-usuario"
                 name="username"
                 placeholder="Ingresar nombre de usuario"
                 autoComplete="off"
-                className="input w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
+                className="form-input"
               />
             </div>
-
-            <div className="mb-4">
+            
+            <div className="form-group">
               <label
+                id="label-password"
                 htmlFor="password"
-                className="text block text-gray-600"
+                className="form-label"
               >
                 Contraseña
               </label>
               <input
                 type="password"
-                id="password"
+                id="in"
                 name="password"
-                placeholder="Ingresar contraseña"
+                placeholder="ingresar contraseña"
                 autoComplete="off"
-                className="input w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
+                className="form-input"
               />
             </div>
-
-            <div className="mb-6">
-              <a
-                href="#"
-                className="text-blue-500 hover:underline"
-              >
-                ¿Olvidaste tu contraseña?
+            
+            <div className="form-options">
+              <div className="remember-me">
+                <input
+                  type="checkbox"
+                  id="remember"
+                  className="remember-checkbox"
+                />
+                <label htmlFor="remember" className="remember-label">
+                  Recordarme
+                </label>
+              </div>
+              <a href="#" className="forgot-password">
+                Olvidaste tu contraseña?
               </a>
             </div>
-
+            
             <button
               type="submit"
-              className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2"
+              className="login-button"
             >
               Iniciar sesión
             </button>
           </form>
-
-          <div className="mt-6 text-center">
-            <a href="#" className="text-blue-500 hover:underline">
+          
+          <div className="signup-link">
+            <a href="#" className="signup-text">
               Registrarse
             </a>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
