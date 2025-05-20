@@ -1,5 +1,9 @@
 import React from 'react'
 
+import logo from "/logo.png";
+
+import "./Login.css";
+
 export default function Nosotros() {
   return (
     <>
