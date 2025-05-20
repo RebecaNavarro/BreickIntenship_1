@@ -1,9 +1,11 @@
 .login-container {
   display: flex;
   height: 100%; 
-  width: 200%; 
+  margin-top: 15vh;
+  width: 100%; 
   background-color: white;
   font-family: 'Arial', sans-serif;
+  
 }
 
 .login-left {
@@ -11,20 +13,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background-color: #f8f8f8; */
   padding: 2rem;
-}
-
-.login-logo {
-  max-height: 160px;
-  margin-bottom: 1.5rem;
-}
-
-.login-tagline {
-  font-size: 1.5rem;
-  font-style: italic;
-  color: #555;
-  font-weight: 300;
 }
 
 .login-right {
@@ -33,6 +22,11 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
+}
+
+.login-logo {
+  max-height: 160px;
+  margin-bottom: 1.5rem;
 }
 
 .login-form-container {
@@ -77,7 +71,7 @@
 
 .form-input:focus {
   outline: none;
-  border-bottom-color: #ff7b25;
+  border-bottom-color: #4d2480;
 }
 
 .form-options {
@@ -94,7 +88,7 @@
 
 .remember-checkbox {
   margin-right: 0.5rem;
-  accent-color: #ff7b25;
+  accent-color: #4d2480;
 }
 
 .remember-label {
@@ -104,7 +98,7 @@
 
 .forgot-password {
   font-size: 0.9rem;
-  color: #ff7b25;
+  color: #4d2480;
   text-decoration: none;
 }
 
@@ -114,7 +108,7 @@
 
 .login-button {
   padding: 0.75rem;
-  background-color: #ff7b25;
+  background-color: #fdcc01;
   color: white;
   border: none;
   border-radius: 25px;
@@ -125,25 +119,45 @@
   margin-top: 1rem;
 }
 
-.login-button:hover {
-  background-color: #e66915;
+
+.signup-container {
+  display: flex;
+  height: 100%; 
+  margin-top: 5vh;
+  width: 100%; 
+  background-color: white;
+  font-family: 'Arial', sans-serif;
+  
 }
 
-.signup-link {
-  margin-top: 1.5rem;
-  text-align: center;
+.signup-left {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
 }
 
-.signup-text {
-  color: #ff7b25;
-  font-weight: 500;
-  text-decoration: none;
+.signup-right {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
 }
 
-.signup-text:hover {
-  text-decoration: underline;
+.signup-button {
+  padding: 0.75rem;
+  background-color: #4d2480;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 1rem;
 }
-
 
 @media (max-width: 768px) {
   .login-container {
