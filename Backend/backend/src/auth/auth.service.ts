@@ -1,50 +1,35 @@
-import { Injectable } from '@nestjs/common';
-import { constants } from 'buffer';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { DatabaseService } from 'src/database/database.service';
+import { UsersService } from '../users/users.service';
 import * as bcrypt from 'bcrypt';
+import { LoginDto } from './dto/login.dto';
+import { RegisterDto } from './dto/register.dto';
+import { UserEntity } from '../users/entities/users.entity';
 
 @Injectable()
-export class AuthService {//noEsRealJeje
-  private readonly mockUser = {
-    email: "user@breick.com",
-    password: "123456", 
-  };
-
+export class AuthService {
   constructor(
+    private usersService: UsersService,
     private jwtService: JwtService,
-    private databaseService: DatabaseService,
-    ){}
+  ) {}
 
-  async validateUser(email: string, password: string): Promise<any> {
-    const userQuery = await this.databaseService.query(
-      'SELECT * FROM users WHERE email = $1',
-      [email],
-    );
-    const user = userQuery.rows[0];
+  async validateUser(email: string, pass: string): Promise<any> {
+    const user = await this.usersService.findOneByEmail(email);
+    if (user && (await bcrypt.compare(pass, user.password))) {
+      const { password, ...result } = user;
+      return result;
+    }
+    return null;
+  }
 
+  async login(loginDto: LoginDto) {
+    const user = await this.validateUser(loginDto.email, loginDto.password);
     if (!user) {
-        throw new Error('Usuario no encontrado');
+      throw new UnauthorizedException('Credenciales no validas');
     }
-    
-    const validPassword = await bcrypt.compare(password, user.password)
-    if (!validPassword){
-        throw new Error ('Contraseña incorrecta')
-    }
-
-    if (!user) {
-      throw new Error('Usuario no encontrado');
-    }
-
-
-    return { email: user.email }; 
-  } 
-  
-  
-  async login(user:any){
-    const payload = {email: user.Email};
-    return{
-        access_token: this.jwtService.sign(payload),
+    const payload = { email: user.email, sub: user.id, role: user.role};
+    return {
+      access_token: this.jwtService.sign(payload),
     };
   }
 }

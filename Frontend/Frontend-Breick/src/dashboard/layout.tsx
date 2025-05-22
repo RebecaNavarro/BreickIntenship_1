@@ -96,6 +96,8 @@ const DashboardLayout = () => {
           </div>
         )}
       </nav>
+
+      {/* Main Content */}
       <main className="flex-grow bg-gray-50">
         <Outlet />
       </main>
