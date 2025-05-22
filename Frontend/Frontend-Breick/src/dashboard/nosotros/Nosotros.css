@@ -1,0 +1,178 @@
+.banner {
+  position: relative;
+  width: 100%;
+  height: 40vh;
+  overflow: hidden;
+}
+
+.banner-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(3px); 
+  transform: scale(1.05); 
+}
+
+.banner-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2; 
+}
+
+/* Texto del banner */
+.banner-title {
+  color: white;
+  font-size: 4rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-align: center;
+  padding: 0 20px;
+}
+
+/* Seccion solo texto */
+.main-content {
+  background-color: white;
+  padding-top: 20px;
+}
+
+.text {
+  font-size: 1.1rem;
+  color: #333;
+  text-align: justify;
+  margin: 1.5rem 150px;
+  line-height: 1.6;
+}
+
+/* Sección Misión y Visión mejorada */
+.mision-vision-container {
+  display: flex;
+  margin: 4rem 150px;
+  gap: 3rem;
+}
+
+.left-section, .right-section {
+  width: 50%;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.section-img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.section-title {
+  font-size: 1.8rem;
+  color: #4d2480; 
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #4d2480;
+}
+
+.section-text {
+  font-size: 1.1rem;
+  color: #555;
+  text-align: justify;
+  line-height: 1.6;
+}
+
+.valores-container {
+  background-color: #4d2480; 
+  padding: 4rem 150px;
+  margin-top: 4rem;
+}
+
+.valores-title {
+  font-size: 2rem;
+  color: white;
+  text-align: center;
+  margin-bottom: 2rem;
+  text-decoration: underline;
+  text-underline-offset: 8px;
+}
+
+.valores-content {
+  display: flex;
+  gap: 3rem;
+}
+
+.valores-left, .valores-right {
+  width: 50%;
+}
+
+.section-text2 {
+  font-size: 1.1rem;
+  color: white;
+  text-align: justify;
+  line-height: 1.8;
+}
+
+.section-text2 b {
+  color: #ffd700; 
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .text,
+  .mision-vision-container,
+  .valores-container {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+  
+  .valores-container {
+    padding: 3rem 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .text,
+  .mision-vision-container {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  
+  .mision-vision-container {
+    flex-direction: column;
+  }
+  
+  .left-section, .right-section,
+  .valores-left, .valores-right {
+    width: 100%;
+  }
+  
+  .valores-content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .valores-container {
+    padding: 2rem 20px;
+    margin-top: 2rem;
+  }
+}

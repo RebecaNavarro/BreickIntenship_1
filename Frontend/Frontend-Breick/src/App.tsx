@@ -3,7 +3,7 @@ import DashboardLayout from './dashboard/layout';
 import Inicio from './dashboard/inicio/page';
 import Catalogo from './dashboard/catalogo/page';
 import Contacto from './dashboard/contacto/page';
-import Nosotros from './dashboard/nosotros/page';
+import Nosotros from './dashboard/nosotros/Nosotros.tsx';
 import Preguntas from './dashboard/preguntas/page';
 import { Promociones } from './dashboard/promociones/page';
 import ResponsabilidadSocial from './dashboard/responsabilidadSocial/page';
