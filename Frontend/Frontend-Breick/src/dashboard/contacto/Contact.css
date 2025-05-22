@@ -1,5 +1,4 @@
-
- .banner {
+.banner {
   position: relative;
   width: 100%;
   height: 40vh;
@@ -104,4 +103,104 @@
   cursor: pointer;
   transition: background-color 0.3s;
   width: fit-content;
+}
+
+
+ .contact-container {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  overflow: hidden;
+  gap: 3rem;
+}
+
+.contact-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: white;
+}
+
+.contact-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row; 
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.contacto-left, .suscribete-right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 2rem;
+}
+
+.contact-form-container {
+  width: 100%;
+  max-width: 320px;
+}
+
+.contact-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  align-items: end;
+}
+
+.contact-form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.contact-form-input {
+  padding: 0.75rem 0;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  background-color: transparent;
+  transition: border-color 0.3s;
+  width: 100%;
+  padding: 10px;
+}
+
+.contact-form-input:focus {
+  outline: none;
+  border-bottom-color: #4d2480;
+}
+
+.contact-send-button{
+  padding: 0.75rem;
+  background-color: #4d2480;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 1rem;
+  width: fit-content;  
 }

@@ -1,7 +1,7 @@
 import contact_banner from "/lapazcenter.jpg";
 import './Contact.css';
 
-export default function Contact(){
+export default function Contact() {
   return (
     <div>
       {/* Banner */}
@@ -33,8 +33,74 @@ export default function Contact(){
           </button>
         </div>
       </div>
-      {/* Contenido principal */}
-      {/* ... */}
+      {/* Contacto y registro */}
+      <div className="contact-container">
+        <div
+          className="contact-background"
+        />
+        <div className="contact-content">
+          <div className="contact-left">
+            <h1 className="contact-title">
+              Contacto
+            </h1>
+
+            <form className="contact-form">
+              <div style={{ display: 'flex', gap: '20px', marginBottom: '20px' }}>
+                <div className="contact-group" style={{ flex: 1 }}>
+                  <input
+                    type="text"
+                    placeholder="Nombre"
+                    autoComplete="off"
+                    className="contact-form-input"
+                    maxLength={20}
+                  />
+                </div>
+                <div className="contact-group" style={{ flex: 1 }}>
+                  <input
+                    type="text"
+                    placeholder="Correo electrónico"
+                    autoComplete="off"
+                    className="contact-form-input"
+                    maxLength={20}
+                  />
+                </div>
+              </div>
+              <div className="contact-group">
+                <input
+                  type="text"
+                  placeholder="Teléfono móvil"
+                  autoComplete="off"
+                  className="contact-form-input"
+                  maxLength={20}
+                />
+              </div>
+              <div className="contact-group">
+                <input
+                  type="text"
+                  placeholder="Mensaje"
+                  autoComplete="off"
+                  className="contact-form-input h-50"
+                  maxLength={20}
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="contact-send-button"
+              >
+                Enviar
+              </button>
+            </form>
+          </div>
+          <div className="suscribete-right">
+            <h1 className="login-title">
+              Iniciar Sesión
+            </h1>
+          </div>
+        </div>
+
+      </div>
     </div>
+
   );
 };
