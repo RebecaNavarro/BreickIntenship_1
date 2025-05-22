@@ -136,19 +136,6 @@
   color: #ffd700; 
 }
 
-/* Responsive */
-@media (max-width: 992px) {
-  .text,
-  .mision-vision-container,
-  .valores-container {
-    margin-left: 50px;
-    margin-right: 50px;
-  }
-  
-  .valores-container {
-    padding: 3rem 50px;
-  }
-}
 
 @media (max-width: 768px) {
   .text,
