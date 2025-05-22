@@ -30,7 +30,6 @@
   z-index: 2; 
 }
 
-/* Texto del banner */
 .banner-title {
   color: white;
   font-size: 4rem;
@@ -42,7 +41,6 @@
   padding: 0 20px;
 }
 
-/* Seccion solo texto */
 .main-content {
   background-color: white;
   padding-top: 20px;
@@ -56,7 +54,6 @@
   line-height: 1.6;
 }
 
-/* Sección Misión y Visión mejorada */
 .mision-vision-container {
   display: flex;
   margin: 4rem 150px;
