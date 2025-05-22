@@ -6,7 +6,6 @@ import { Cart } from './entities/cart.entity';
 import { ProductsModule } from '../products/products.module';
 import { AuthModule } from 'src/auth/auth.module';
 import { JwtModule, JwtService } from '@nestjs/jwt';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Cart]), ProductsModule, AuthModule, JwtModule],
