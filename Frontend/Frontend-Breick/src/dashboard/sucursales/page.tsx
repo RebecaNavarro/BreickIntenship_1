@@ -10,22 +10,15 @@ import SucursalesTarijaSantaCruz from "../../components/Sucursales/SucursalesTar
 export default function Sucursales() {
   return (
     <>
-      <div className="bg-gray-50 flex items-center min-h-[20vh]">
-        <section
-          className="w-full bg-cover bg-center py-24 relative"
-          style={{ backgroundImage: 'url(/lapaz.png)' }}
-        >
-          <div className="absolute inset-0 bg-black/50"></div>
-          <div className="container mx-auto text-center text-white relative z-10">
-            <h1 className="text-5xl font-bold mb-4 drop-shadow-lg animate-fade-in">
-              Nuestras Sucursales
-            </h1>
-            <p className="text-lg font-light drop-shadow-md">
-              Descubre nuestras ubicaciones en La Paz
-            </p>
+      <div className="banner">
+          <div
+            className="banner-image"
+            style={{ backgroundImage: `url(https://i0.wp.com/www.viviendoporelmundo.com/wp-content/uploads/2015/04/La-Paz-10.jpg?fit=700%2C525&ssl=1)` }}
+          />
+          <div className="banner-content">
+            <h1 className="banner-title">SUCURSALES</h1>
           </div>
-        </section>
-      </div>
+        </div>
       <div className="container mx-auto py-10">
         <h2 className="text-4xl font-semibold text-center text-gray-800 mb-8">
           La Paz
