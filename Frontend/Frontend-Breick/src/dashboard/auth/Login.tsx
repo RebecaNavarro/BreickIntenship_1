@@ -52,12 +52,13 @@ function Login() {
 
     setLoading(true);
     setError("");
+    if (!formData.email || !formData.password || !formData.username) {
+        throw new Error("Todos los campos son requeridos");
+    }
     
     try {
 
       const response = await register(formData.username, formData.email, formData.password,"customer" )
-  
-      
       // Cambiar a vista de login después de registro exitoso
       setMethod("signin");
       setError(""); 
