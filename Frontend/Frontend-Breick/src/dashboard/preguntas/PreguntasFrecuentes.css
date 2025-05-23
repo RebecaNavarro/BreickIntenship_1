@@ -1,0 +1,133 @@
+.banner {
+  position: relative;
+  width: 100%;
+  height: 40vh;
+  overflow: hidden;
+}
+
+.banner-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(3px);
+  transform: scale(1.05);
+}
+
+.banner-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.banner-title {
+  color: white;
+  font-size: 4rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 20px; /* Espacio entre título y texto */
+}
+
+.banner-text {
+  color: white;
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  letter-spacing: 1px;
+  max-width: 800px;
+  line-height: 1.5;
+}
+
+.sucursales-container {
+  display: flex;
+  gap: 1rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.preg-left-left-section, .preg-left-section, .preg-right-section, .preg-right-right-section {
+  width: 25%;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.section-img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.preg-tittle {
+  font-size: 2rem;
+  color: #4d2480; 
+  text-align: center;
+  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+  text-decoration: underline;
+}
+
+.preg-section-title {
+  font-size: 1.2rem;
+  color: #4d2480; 
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem; 
+  text-decoration: underline;
+}
+
+.section-text {
+  font-size: 1.1rem;
+  color: #555;
+  text-align: justify;
+  line-height: 1.6;
+}
+
+.distribuidores-container {
+  background-color: #4d2480; 
+  padding-top: 30px;
+  margin-top: 4rem;
+}
+
+.distribuidores-title {
+  font-size: 2rem;
+  color: white;
+  text-align: center;
+  margin-bottom: 2rem;
+  text-decoration: underline;
+  text-underline-offset: 8px;
+}
+
+.distribuidores-content {
+  display: flex;
+  gap: 3rem;
+}
+
+.distribuidores-left, .distribuidores-right {
+  width: 50%;
+  margin-left: 180px;
+  margin-right: 180px;
+}
+

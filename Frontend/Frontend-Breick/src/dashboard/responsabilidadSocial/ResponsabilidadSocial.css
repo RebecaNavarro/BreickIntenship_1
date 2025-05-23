@@ -1,0 +1,122 @@
+.banner {
+  position: relative;
+  width: 100%;
+  height: 40vh;
+  overflow: hidden;
+}
+
+.banner-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(3px);
+  transform: scale(1.05);
+}
+
+.banner-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.banner-title {
+  color: white;
+  font-size: 4rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 20px; /* Espacio entre título y texto */
+}
+
+.banner-text {
+  color: white;
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  letter-spacing: 1px;
+  max-width: 800px;
+  line-height: 1.5;
+}
+
+.respo-section-container {
+  display: flex;
+  margin: 2rem;
+  margin-top: 0;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+}
+
+.respo-left-section {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+}
+
+.respo-right-section {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  width: 100%;
+}
+
+.section-img {
+  width: fit-content;
+  max-height: 400px; 
+  object-fit: contain; 
+  border-radius: 8px;
+}
+
+.respo-section-title {
+  font-size: 1.9rem;
+  color: #4d2480;
+  text-align: left;
+  margin-bottom: 4rem;
+  margin-top: 2rem;
+  margin-left: 4rem;
+  font-weight: 700;
+}
+
+.section-text {
+  font-size: 1.2rem;
+  color: #555;
+  text-align: justify;
+  line-height: 1.6;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.video-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.video-container video {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

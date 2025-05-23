@@ -4,9 +4,9 @@ import Inicio from './dashboard/inicio/page';
 import Catalogo from './dashboard/catalogo/page';
 import Contacto from './dashboard/contacto/Contact.tsx';
 import Nosotros from './dashboard/nosotros/Nosotros.tsx';
-import Preguntas from './dashboard/preguntas/page';
+import Preguntas from './dashboard/preguntas/PreguntasFrecuentes.tsx';
 import { Promociones } from './dashboard/promociones/page';
-import ResponsabilidadSocial from './dashboard/responsabilidadSocial/page';
+import ResponsabilidadSocial from './dashboard/responsabilidadSocial/ResponsabilidadSocial.tsx';
 import Sucursales from './dashboard/sucursales/page';
 import Login from './dashboard/auth/Login';
 
