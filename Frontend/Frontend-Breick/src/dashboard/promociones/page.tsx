@@ -1,7 +1,7 @@
 import React from 'react'
 
-export const Promociones = () => {
+export const page = () => {
   return (
-    <div>Promociones</div>
+    <div>page</div>
   )
 }

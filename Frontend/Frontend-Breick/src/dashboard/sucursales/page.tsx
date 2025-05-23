@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function Sucursales() {
+export const page = () => {
   return (
-    <div>Sucursales</div>
+    <div>page</div>
   )
 }

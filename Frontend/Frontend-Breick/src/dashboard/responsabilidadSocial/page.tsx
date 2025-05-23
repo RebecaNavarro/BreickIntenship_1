@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function ResponsabilidadSocial() {
+export const page = () => {
   return (
-    <div>ResponsabilidadSocial</div>
+    <div>page</div>
   )
 }
