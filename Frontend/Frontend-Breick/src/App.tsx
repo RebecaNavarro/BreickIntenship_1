@@ -14,6 +14,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<DashboardLayout />}>
+        <Route index element={<Inicio />} />
         <Route path="inicio" element={<Inicio />} />
         <Route path="catalogo" element={<Catalogo />} />  
         <Route path="contacto" element={<Contacto />} />

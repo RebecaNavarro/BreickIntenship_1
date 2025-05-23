@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import logo from "/logo.png";
 import "./Login.css";
+import { login, register} from "../../services/auth.service";
+
 
 function Login() {
   const [method, setMethod] = useState("signin");
@@ -30,14 +32,12 @@ function Login() {
     setError("");
     
     try {
-      const response = await axios.post('http://tu-backend.com/api/auth/login', {
-        email: formData.email,
-        password: formData.password
-      });
-      
-      localStorage.setItem('authToken', response.data.token);
-      
-      navigate('/dashboard');
+      const response = await login(formData.email, formData.password);
+  
+      localStorage.setItem('authToken', response.access_token);
+
+      // Redirigir a la página principal
+      navigate('/Inicio');
       
     } catch (err) {
       setError("Usuario o contraseña incorrectos");
@@ -49,23 +49,17 @@ function Login() {
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Validar que las contraseñas coincidan
-    if (formData.password !== formData.confirmPassword) {
-      setError("Las contraseñas no coinciden");
-      return;
-    }
-    
+
     setLoading(true);
     setError("");
+    if (!formData.email || !formData.password || !formData.username) {
+        throw new Error("Todos los campos son requeridos");
+    }
     
     try {
-      const response = await axios.post('http://tu-backend.com/api/auth/register', {
-        username: formData.username,
-        email: formData.email,
-        password: formData.password
-      });
-      
+
+      const response = await register(formData.username, formData.email, formData.password,"customer" )
+      // Cambiar a vista de login después de registro exitoso
       setMethod("signin");
       setError(""); 
       alert("Registro exitoso. Por favor inicia sesión.");
@@ -102,7 +96,7 @@ function Login() {
                     autoComplete="off"
                     className="form-input"
                     maxLength={20}
-                    value={formData.username}
+                    value={formData.email}
                     onChange={handleChange}
                     required
                   />
@@ -215,21 +209,7 @@ function Login() {
                   />
                 </div>
 
-                <div className="form-group">
-                  <label htmlFor="confirmPassword" className="form-label">Confirmar contraseña</label>
-                  <input
-                    type="password"
-                    id="input-confirm-password"
-                    name="confirmPassword"
-                    maxLength={10}
-                    value={formData.confirmPassword}
-                    onChange={handleChange}
-                    placeholder="Repetir Contraseña"
-                    autoComplete="off"
-                    className="form-input"
-                    required
-                  />
-                </div>
+    
                 
                 <button
                   type="submit"
