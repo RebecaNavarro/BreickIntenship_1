@@ -1,229 +1,264 @@
 import { useState } from "react";
-
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 import logo from "/logo.png";
-
 import "./Login.css";
 
 function Login() {
-
   const [method, setMethod] = useState("signin");
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: ""
+  });
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
-  const changeToSignUp = () => setMethod("signup");
-  const changeToSignIn = () => setMethod("signin");
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+    
+    try {
+      const response = await axios.post('http://tu-backend.com/api/auth/login', {
+        email: formData.email,
+        password: formData.password
+      });
+      
+      // Guardar token en localStorage o contexto
+      localStorage.setItem('authToken', response.data.token);
+      
+      // Redirigir al dashboard o página principal
+      navigate('/dashboard');
+      
+    } catch (err) {
+      setError("Usuario o contraseña incorrectos");
+      console.error("Error en login:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleRegister = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Validar que las contraseñas coincidan
+    if (formData.password !== formData.confirmPassword) {
+      setError("Las contraseñas no coinciden");
+      return;
+    }
+    
+    setLoading(true);
+    setError("");
+    
+    try {
+      const response = await axios.post('http://tu-backend.com/api/auth/register', {
+        username: formData.username,
+        email: formData.email,
+        password: formData.password
+      });
+      
+      // Cambiar a vista de login después de registro exitoso
+      setMethod("signin");
+      setError(""); // Limpiar errores
+      alert("Registro exitoso. Por favor inicia sesión.");
+      
+    } catch (err) {
+      if (axios.isAxiosError(err)) {
+        setError(err.response?.data?.message || "Error en el registro");
+      } else {
+        setError("Error en el registro");
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
-    <div className="login-page flex ">
-      
+    <div className="login-page flex">
       {method === "signin" && (
-      <div id="login" className="login-container justify-center items-center">
-        <div id="login-leftside" className="login-left">
-          <div id="login-form-container" className="login-form-container">
-            <h1 id="h1-login" className="login-title">
-              Iniciar Sesión
-            </h1>
-            
-            <form id="login" className="login-form">
-              <div className="form-group">
-                <label
-                  id="label-usuario"
-                  htmlFor="username"
-                  className="form-label"
-                >
-                  Usuario
-                </label>
-                <input
-                  type="text"
-                  id="input-username"
-                  placeholder="Ingresar nombre de usuario"
-                  autoComplete="off"
-                  className="form-input"
-                  maxLength={20}
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                />
-              </div>
+        <div id="login" className="login-container justify-center items-center">
+          <div id="login-leftside" className="login-left">
+            <div id="login-form-container" className="login-form-container">
+              <h1 id="h1-login" className="login-title">Iniciar Sesión</h1>
               
-              <div className="form-group">
-                <label
-                  id="label-password"
-                  htmlFor="password"
-                  className="form-label"
-                >
-                  Contraseña
-                </label>
-                <input
-                  type="password"
-                  id="input-password"
-                  maxLength={10}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Ingresar contraseña"
-                  autoComplete="off"
-                  className="form-input"
-                />
-              </div>
-              <div className="form-options">
-                <div className="remember-me">
+              {error && <div className="error-message">{error}</div>}
+              
+              <form id="login" className="login-form" onSubmit={handleLogin}>
+                <div className="form-group">
+                  <label htmlFor="email" className="form-label">Usuario</label>
                   <input
-                    type="checkbox"
-                    id="remember-checkbox"
-                    className="remember-checkbox"
+                    type="text"
+                    id="input-email"
+                    name="email"
+                    placeholder="Ingresar nombre de usuario"
+                    autoComplete="off"
+                    className="form-input"
+                    maxLength={20}
+                    value={formData.username}
+                    onChange={handleChange}
+                    required
                   />
-                  <label id="label-remember" htmlFor="remember" className="remember-label">
-                    Recordarme
-                  </label>
                 </div>
-                <a id="forgot-password" href="#" className="forgot-password">
-                  Olvidaste tu contraseña?
-                </a>
-              </div>
-              <button
-                id="btn-login"
-                type="submit"
-                className="login-button"
-              >
-                Iniciar sesión
-              </button>
-            </form>
+                
+                <div className="form-group">
+                  <label htmlFor="password" className="form-label">Contraseña</label>
+                  <input
+                    type="password"
+                    id="input-password"
+                    name="password"
+                    maxLength={10}
+                    value={formData.password}
+                    onChange={handleChange}
+                    placeholder="Ingresar contraseña"
+                    autoComplete="off"
+                    className="form-input"
+                    required
+                  />
+                </div>
+                
+                {/* <div className="form-options">
+                  <div className="remember-me">
+                    <input
+                      type="checkbox"
+                      id="remember-checkbox"
+                      className="remember-checkbox"
+                    />
+                    <label htmlFor="remember" className="remember-label">Recordarme</label>
+                  </div>
+                  <a href="#" className="forgot-password">Olvidaste tu contraseña?</a>
+                </div> */}
+                
+                <button
+                  type="submit"
+                  className="login-button"
+                  disabled={loading}
+                >
+                  {loading ? "Cargando..." : "Iniciar sesión"}
+                </button>
+              </form>
+            </div>
+          </div>
+          
+          <div id="login-rightside" className="login-right" style={{ flexDirection: 'column', gap: '20px' }}>
+            <img src={logo} alt="Logo" className="login-logo" />
+            <button
+              className="signup-button"
+              type="button"
+              onClick={() => setMethod("signup")}
+            >
+              ¿Aún no tienes una cuenta?
+            </button>
           </div>
         </div>
-        <div id="login-rightside" className="login-right" style={{ flexDirection: 'column', gap: '20px' }}>
-          <img 
-            id="login-logo" 
-            src={logo} 
-            alt="Logo" 
-            className="login-logo" 
-          />
-          <button
-            id="btn-go-to-signup"
-            className="signup-button"
-            type="button"  
-            onClick={changeToSignUp}  
-          >
-            ¿Aún no tienes una cuenta?
-          </button>
-        </div>
-      </div> 
       )}
+      
       {method === "signup" && (
-      <div id="signup" className="signup-container justify-center items-center">
-        <div id="signup-leftside" className="signup-left" style={{ flexDirection: 'column', gap: '20px' }}>
-          <img 
-            id="signup-logo"
-            src={logo} 
-            alt="Logo" 
-            className="login-logo" 
-          />
-          <button
-            id="btn-go-to-login"
-            className="login-button"
-            type="button"  
-            onClick={changeToSignIn}  
-          >
-            ¿Ya tienes una cuenta?
-          </button>
-        </div>
-        <div id="signup-rightside" className="signup-right">
-          <div className="signup-form-container">
-            <h1 id="h1-signup" className="login-title">
-              Registrarse
-            </h1>
-            <form id="signup" className="login-form">
-              <div className="form-group">
-                <label
-                  id="label-usuario-signup"
-                  htmlFor="username"
-                  className="form-label"
-                >
-                  Usuario
-                </label>
-                <input
-                  type="text"
-                  id="input-usuario"
-                  placeholder="Ingresar nombre de usuario"
-                  autoComplete="off"
-                  className="form-input"
-                  maxLength={20}
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                />
-              </div>
-
-              <div className="form-group">
-                <label
-                  id="label-usuario-signup"
-                  htmlFor="username"
-                  className="form-label"
-                >
-                  Email
-                </label>
-                <input
-                  type="text"
-                  id="input-usuario"
-                  placeholder="Ingresar correo electrónico"
-                  autoComplete="off"
-                  className="form-input"
-                  maxLength={20}
-                />
-              </div>
+        <div id="signup" className="signup-container justify-center items-center">
+          <div id="signup-leftside" className="signup-left" style={{ flexDirection: 'column', gap: '20px' }}>
+            <img src={logo} alt="Logo" className="login-logo" />
+            <button
+              className="login-button"
+              type="button"
+              onClick={() => setMethod("signin")}
+            >
+              ¿Ya tienes una cuenta?
+            </button>
+          </div>
+          
+          <div id="signup-rightside" className="signup-right">
+            <div className="signup-form-container">
+              <h1 id="h1-signup" className="login-title">Registrarse</h1>
               
-              <div className="form-group">
-                <label
-                  id="label-password"
-                  htmlFor="password"
-                  className="form-label"
-                >
-                  Contraseña
-                </label>
-                <input
-                  type="password"
-                  id="in"
-                  maxLength={10}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Ingresar contraseña"
-                  autoComplete="off"
-                  className="form-input"
-                />
-              </div>
+              {error && <div className="error-message">{error}</div>}
+              
+              <form id="signup" className="login-form" onSubmit={handleRegister}>
+                <div className="form-group">
+                  <label htmlFor="username" className="form-label">Usuario</label>
+                  <input
+                    type="text"
+                    id="input-usuario"
+                    name="username"
+                    placeholder="Ingresar nombre de usuario"
+                    autoComplete="off"
+                    className="form-input"
+                    maxLength={20}
+                    value={formData.username}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
 
-              <div className="form-group">
-                <label
-                  id="label-password"
-                  htmlFor="password"
-                  className="form-label"
+                <div className="form-group">
+                  <label htmlFor="email" className="form-label">Email</label>
+                  <input
+                    type="email"
+                    id="input-email-register"
+                    name="email"
+                    placeholder="Ingresar correo electrónico"
+                    autoComplete="off"
+                    className="form-input"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                
+                <div className="form-group">
+                  <label htmlFor="password" className="form-label">Contraseña</label>
+                  <input
+                    type="password"
+                    id="input-password-register"
+                    name="password"
+                    maxLength={10}
+                    value={formData.password}
+                    onChange={handleChange}
+                    placeholder="Ingresar contraseña"
+                    autoComplete="off"
+                    className="form-input"
+                    required
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="confirmPassword" className="form-label">Confirmar contraseña</label>
+                  <input
+                    type="password"
+                    id="input-confirm-password"
+                    name="confirmPassword"
+                    maxLength={10}
+                    value={formData.confirmPassword}
+                    onChange={handleChange}
+                    placeholder="Repetir Contraseña"
+                    autoComplete="off"
+                    className="form-input"
+                    required
+                  />
+                </div>
+                
+                <button
+                  type="submit"
+                  className="signup-button"
+                  disabled={loading}
                 >
-                  Confirmar contraseña
-                </label>
-                <input
-                  type="password"
-                  id="in"
-                  maxLength={10}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Repetir Contraseña"
-                  autoComplete="off"
-                  className="form-input"
-                />
-              </div>
-              <button
-                id="btn-signup"
-                type="submit"
-                className="signup-button"
-              >
-                Registrarse
-              </button>
-            </form>
+                  {loading ? "Registrando..." : "Registrarse"}
+                </button>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
-      
       )}
     </div>
-
   );
 }
 
