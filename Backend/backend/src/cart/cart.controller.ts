@@ -2,7 +2,6 @@ import { Controller, Post, Get, Delete, Body, Param, Req, UseGuards } from '@nes
 import { CartService } from './cart.service';
 import { AddToCartDto } from './dto/add-to-cart.dto';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
-import { Request } from 'express';
 import { RequestWithUser } from 'src/auth/types/request-with-user.interface';
 
 @Controller('cart')

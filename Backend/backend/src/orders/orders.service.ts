@@ -54,6 +54,8 @@ export class OrdersService {
       total,
       status: OrderStatus.PENDING,
     });
+    const savedOrder = await this.ordersRepository.save(order);
+
 
     // 3. Actualizar stock y limpiar carrito
     for (const item of createOrderDto.items) {
@@ -62,7 +64,7 @@ export class OrdersService {
 
     await this.cartService.clearCart(user.id);
 
-    return this.ordersRepository.save(order);
+    return savedOrder;
   }
 
   async findAll(user: UserEntity) {
