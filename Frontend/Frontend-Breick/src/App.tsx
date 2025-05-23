@@ -1,35 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route } from 'react-router-dom';
+import DashboardLayout from './dashboard/layout';
+import Inicio from './dashboard/inicio/page';
+import Catalogo from './dashboard/catalogo/page';
+import Contacto from './dashboard/contacto/page';
+import Nosotros from './dashboard/nosotros/Nosotros.tsx';
+import Preguntas from './dashboard/preguntas/page';
+import { Promociones } from './dashboard/promociones/page';
+import ResponsabilidadSocial from './dashboard/responsabilidadSocial/page';
+import Sucursales from './dashboard/sucursales/page';
+import Login from './dashboard/auth/Login';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Routes>
+      <Route path="/" element={<DashboardLayout />}>
+        <Route path="inicio" element={<Inicio />} />
+        <Route path="catalogo" element={<Catalogo />} />  
+        <Route path="contacto" element={<Contacto />} />
+        <Route path="nosotros" element={<Nosotros />} />
+        <Route path="preguntas" element={<Preguntas />} />
+        <Route path="promociones" element={<Promociones />} />
+        <Route path="responsabilidadSocial" element={<ResponsabilidadSocial />} />
+        <Route path="sucursales" element={<Sucursales />} />
+        <Route path="auth" element={<Login />} />
+      </Route>
+    </Routes>
+  );
 }
 
-export default App
+export default App;
