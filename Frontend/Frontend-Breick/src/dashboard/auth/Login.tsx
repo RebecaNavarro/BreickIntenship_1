@@ -35,10 +35,8 @@ function Login() {
         password: formData.password
       });
       
-      // Guardar token en localStorage o contexto
       localStorage.setItem('authToken', response.data.token);
       
-      // Redirigir al dashboard o página principal
       navigate('/dashboard');
       
     } catch (err) {
@@ -68,9 +66,8 @@ function Login() {
         password: formData.password
       });
       
-      // Cambiar a vista de login después de registro exitoso
       setMethod("signin");
-      setError(""); // Limpiar errores
+      setError(""); 
       alert("Registro exitoso. Por favor inicia sesión.");
       
     } catch (err) {
@@ -126,18 +123,6 @@ function Login() {
                     required
                   />
                 </div>
-                
-                {/* <div className="form-options">
-                  <div className="remember-me">
-                    <input
-                      type="checkbox"
-                      id="remember-checkbox"
-                      className="remember-checkbox"
-                    />
-                    <label htmlFor="remember" className="remember-label">Recordarme</label>
-                  </div>
-                  <a href="#" className="forgot-password">Olvidaste tu contraseña?</a>
-                </div> */}
                 
                 <button
                   type="submit"

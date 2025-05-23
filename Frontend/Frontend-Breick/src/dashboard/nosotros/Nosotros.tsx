@@ -1,6 +1,9 @@
 import mision from "/mision.jpg";
 import vision from "/vision.jpg";
 import quienesomos from "/quienesosmos.jpg";
+
+import MiniFooter from "../../components/MiniFooter";
+
 import "./Nosotros.css";
 
 export default function Nosotros() {
@@ -57,7 +60,7 @@ export default function Nosotros() {
           </div>
 
           {/* Sección Valores */}
-          <div id="valores-container" className="valores-container">
+          <div id="valores-container" className="valores-container h-130">
             <h2 className="valores-title">Valores</h2>
             <div className="valores-content">
               <div id="valores-left" className="valores-left">
@@ -79,6 +82,7 @@ export default function Nosotros() {
 
         </div>
       </div>
+      <MiniFooter />
     </>
   );
 }
