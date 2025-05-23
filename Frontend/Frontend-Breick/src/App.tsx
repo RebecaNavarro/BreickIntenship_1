@@ -9,6 +9,7 @@ import { Promociones } from './dashboard/promociones/page';
 import ResponsabilidadSocial from './dashboard/responsabilidadSocial/page';
 import Sucursales from './dashboard/sucursales/page';
 import Login from './dashboard/auth/Login';
+import PromocionFinalizada from './dashboard/promociones/PromocionFinalizada.tsx';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="catalogo" element={<Catalogo />} />  
         <Route path="contacto" element={<Contacto />} />
         <Route path="nosotros" element={<Nosotros />} />
+        <Route path="promocionfinalizada" element={<PromocionFinalizada />} />
         <Route path="preguntas" element={<Preguntas />} />
         <Route path="promociones" element={<Promociones />} />
         <Route path="responsabilidadSocial" element={<ResponsabilidadSocial />} />

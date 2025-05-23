@@ -33,7 +33,7 @@ export default function HorizontalCards(){
       {cardsData.map((card) => (
         <div 
           key={card.id}
-          className="relative group w-96 h-96 overflow-hidden bg-white rounded-lg shadow-xl transition-all duration-300 hover:scale-105"
+          className="relative group w-96 h-96 overflow-hidden rounded-lg shadow-xl transition-all duration-300 hover:scale-105"
         >
           <img 
             className="object-cover w-full h-full transform duration-700 group-hover:scale-110" 
@@ -42,7 +42,7 @@ export default function HorizontalCards(){
           />
           
           {/* Overlay oscuro */}
-          <div className="absolute w-full h-full shadow-2xl opacity-20 transform duration-500 inset-y-full group-hover:-inset-y-0"></div>
+          <div className="absolute w-full h-full  opacity-20 transform duration-500 inset-y-full group-hover:-inset-y-0"></div>
           
           {/* Contenido que aparece al hacer hover */}
           <div className="absolute bg-gradient-to-t from-black w-full h-full transform duration-500 inset-y-3/4 group-hover:-inset-y-0">

@@ -45,7 +45,7 @@ const DashboardLayout = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <nav className="w-full bg-gradient-to-r from-teal-600 to-teal-500 text-white shadow-lg">
-        <div className="px-4 py-3 mx-auto max-w-7xl flex items-center justify-between">
+        <div className="py-3 mx-auto max-w-7xl flex ">
           <Link to="/inicio" className="flex items-center flex-shrink-0">
             <img
               className="w-24 h-auto md:w-28"
@@ -55,7 +55,7 @@ const DashboardLayout = () => {
           </Link>
 
           {!isMobile ? (
-            <div className="flex items-center gap-2 text-sm md:text-base font-medium">
+            <div className="flex ml-39 items-center  text-sm md:text-base font-medium">
               {navLinks.map((link) => (
                 <Link
                   key={link.to}

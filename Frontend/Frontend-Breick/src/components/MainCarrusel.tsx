@@ -2,9 +2,9 @@ import { useState, useEffect, useCallback } from 'react';
 
 export default function  ChocolateCarousel  () {
   const chocolateImages = [
-  '/ca3.png', // Chocolate 1
-  'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80', // Chocolate 2
-  'https://images.unsplash.com/photo-1606312619070-d48b4c652a52?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80', // Chocolate 3
+  '/ca3.png', 
+  'https://chocolatestorres.com.ar/wp-content/uploads/2023/03/3-1.jpg', // Chocolate 2
+  'https://laoctavabo.com/wp-content/uploads/2024/03/WhatsApp-Image-2024-03-12-at-5.58.36-PM.jpeg', // Chocolate 3
 ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -70,8 +70,7 @@ export default function  ChocolateCarousel  () {
           />
         ))}
       </div>
-
-      {/* Controles manuales */}
+      
       <button 
         onClick={() => {
           setCurrentSlide(prev => (prev - 1 + chocolateImages.length) % chocolateImages.length);
